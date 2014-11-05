@@ -1,0 +1,42 @@
+<head>
+  <title>BDCyclists Karma Board</title>
+</head>
+
+<body>
+  {{> loginButtons}}
+
+  <h1>BDCyclists Karma Board</h1>
+  	{{> leaderboard}}
+    {{> addPlayerForm}}
+</body>
+
+<template name="leaderboard">
+	<ul>
+		{{#each player}}
+			<li class="player {{selectedClass}}">{{name}}: {{score}}</li>
+		{{/each}}
+	</ul>
+
+  {{#if currentUser}}
+
+  <input type="button" class="increment" value="+1">
+  <input type="button" class="decrement" value="-1">
+
+  {{#if showSelectedPlayer}}
+    <li>Selected Player: {{showSelectedPlayer.name}}</li>
+  {{/if}}
+
+  <input type="button" class="remove" value="Remove Member">
+
+  {{/if}}
+</template>
+
+
+<template name="addPlayerForm">
+  {{#if currentUser}}
+  <form>
+    <input type="text" name="playerName">
+    <input type="submit" value="Add Member">
+  </form>
+  {{/if}}
+</template>
