@@ -3,40 +3,47 @@
 </head>
 
 <body>
-  {{> loginButtons}}
 
-  <h1>BDCyclists Karma Board</h1>
+<div class="outer">
+
+ <div class="right"> {{> loginButtons}}</div>
+
+  <h1 class="title">BDCyclists Karma Board</h1>
   	{{> leaderboard}}
+
+<div class="details">
+<br/>
     {{> addPlayerForm}}
+</div>
+</div>
 </body>
 
 <template name="leaderboard">
-	<ul>
+	 <ol class="leaderboard">
 		{{#each player}}
-			<li class="player {{selectedClass}}">{{name}}: {{score}}</li>
+			<li class="player {{selectedClass}}">
+                        <span class="name">{{name}}</span>: <span class="score">{{score}}</span></li>
 		{{/each}}
-	</ul>
-
-  {{#if currentUser}}
-
-  <input type="button" class="increment" value="+1">
-  <input type="button" class="decrement" value="-1">
-
+	</ol>
+<div class="details">
+{{#if currentUser}}
   {{#if showSelectedPlayer}}
-    <li>Selected Player: {{showSelectedPlayer.name}}</li>
+   Selected Player: {{showSelectedPlayer.name}}<br/><br/>
+  <button class="rem remove">X</button>
+  <button class="dec decrement">-1</button>
+  <button class="inc increment">+1</button>
   {{/if}}
 
-  <input type="button" class="remove" value="Remove Member">
-
   {{/if}}
-</template>
+</div>
+ </template>
 
 
 <template name="addPlayerForm">
   {{#if currentUser}}
   <form>
-    <input type="text" name="playerName">
-    <input type="submit" value="Add Member">
+    <input class="newplayerbox" type="text" name="playerName">
+    <button class="add">Add Member</button>
   </form>
   {{/if}}
 </template>
