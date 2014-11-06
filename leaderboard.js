@@ -49,7 +49,6 @@ if(Meteor.isClient) {
       Meteor.call('insertPlayerData', playerNameVar);
     }
   });
-
 }
 
 if(Meteor.isServer) {
